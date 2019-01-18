@@ -15,5 +15,7 @@ package frc.robot;
  */
 public class RobotMap {
   //USB Ports
-	public final static int xboxPort = 0;
+  public final static int xboxPort = 0;
+  
+  public final static int armPort = 1;
 }

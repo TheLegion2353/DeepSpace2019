@@ -18,4 +18,6 @@ public class RobotMap {
   public final static int xboxPort = 0;
   
   public final static int armPort = 1;
+
+  public final static int rollerPort = 1;
 }

@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.Roller;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,6 +25,7 @@ import frc.robot.subsystems.Arm;
 public class Robot extends TimedRobot {
   public static OI m_oi;
   public static Arm arm;
+  public static Roller roller;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -36,7 +38,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
     arm = new Arm();
-
+    roller = new Roller();
 
     //m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());

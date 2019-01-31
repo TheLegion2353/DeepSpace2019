@@ -5,10 +5,10 @@ import frc.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RollerMove extends Command {
+public class DriveMove extends Command {
 
-    public RollerMove() {
-        requires(Robot.roller);
+    public DriveMove() {
+        requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time
@@ -17,13 +17,7 @@ public class RollerMove extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (OI.xboxController.getRawButton(OI.right_Bumper) == true) {
-    	    Robot.roller.rollerMove(1);
-        }
-
-        if (OI.xboxController.getRawButton(OI.left_Bumper) == true) {
-            Robot.roller.rollerMove(-1);
-        }
+    	Robot.drive.driveMove(OI.getTriggerValue());
     }
 
     // Make this return true when this Command no longer needs to run execute()

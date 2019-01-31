@@ -12,7 +12,7 @@ public class Roller extends Subsystem {
 	private static Talon rollerMotor;
 	
 	public Roller() {
-		rollerMotor = new Talon(RobotMap.rollerMotor);
+		rollerMotor = new Talon(RobotMap.rollerPort);
 	}
 
     public void initDefaultCommand() {
@@ -20,6 +20,6 @@ public class Roller extends Subsystem {
     }
     
     public static void rollerMove(double speed) {
-    	rollerMove.set(speed);
+    	rollerMotor.set(speed);
     }
 }

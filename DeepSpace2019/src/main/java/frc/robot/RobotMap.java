@@ -19,5 +19,12 @@ public class RobotMap {
   
   public final static int armPort = 1;
 
-  public final static int rollerPort = 1;
+  public final static int rollerPort = 2;
+ 
+  //Drive motor ports
+  public final static int frontleftPort = 3;
+  public final static int frontrightPort = 4;
+  public final static int backleftPort = 5;
+  public final static int backrightPort = 6;
+
 }

@@ -17,14 +17,14 @@ public class RobotMap {
   //USB Ports
   public final static int xboxPort = 0;
   
-  public final static int armPort = 1;
+  public final static int armPort = 4;
 
-  public final static int rollerPort = 2;
+  public final static int rollerPort = 5;
  
   //Drive motor ports
   public final static int frontleftPort = 3;
-  public final static int frontrightPort = 4;
-  public final static int backleftPort = 5;
-  public final static int backrightPort = 6;
+  public final static int frontrightPort = 1;
+  public final static int backleftPort = 2;
+  public final static int backrightPort = 0;
 
 }

@@ -17,6 +17,13 @@ public class ringLight {
         hBridge.set(false);
     }
 
+    public void strobeFor(int amnt) {
+        for(int i=0; i <= amnt; i++) {
+            hBridge.set(true);
+            hBridge.set(false);
+        }
+    }
+
     public void toggle() {
         if (hBridge.get() == true) {
             hBridge.set(false);

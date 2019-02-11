@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class RollerMove extends Command {
 
+    double amnt = 0.25;
     public RollerMove() {
         requires(Robot.roller);
     }
@@ -18,11 +19,11 @@ public class RollerMove extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if (OI.xboxController.getRawButton(OI.right_Bumper) == true) {
-    	    Robot.roller.rollerMove(1);
+    	    Robot.roller.rollerMove(amnt);
         }
 
         if (OI.xboxController.getRawButton(OI.left_Bumper) == true) {
-            Robot.roller.rollerMove(-1);
+            Robot.roller.rollerMove(-amnt);
         }
     }
 

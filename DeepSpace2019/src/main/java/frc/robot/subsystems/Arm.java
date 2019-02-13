@@ -12,7 +12,7 @@ public class Arm extends Subsystem {
 	private static Talon armMotor;
     
 	public Arm() {
-        armMotor = new Talon(RobotMap.armPort);
+        armMotor = new Talon(RobotMap.leftArmPort);
 	}
 
     public void initDefaultCommand() {

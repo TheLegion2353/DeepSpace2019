@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Arm;
-import frc.robot.subsystems.Roller;
 import frc.robot.subsystems.Drive;
 
 /**
@@ -26,7 +25,6 @@ import frc.robot.subsystems.Drive;
 public class Robot extends TimedRobot {
   public static OI m_oi;
   public static Arm arm;
-  public static Roller roller;
   public static Drive drive;
 
   Command m_autonomousCommand;
@@ -40,7 +38,6 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
     arm = new Arm();
-    roller = new Roller();
     drive = new Drive();
 
     //m_chooser.setDefaultOption("Default Auto", new ExampleCommand());

@@ -9,10 +9,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Arm extends Subsystem {
 
-	private static Talon armMotor;
+    private static Talon leftArmMotor;
+    private static Talon rightArmMotor;
     
 	public Arm() {
-        armMotor = new Talon(RobotMap.leftArmPort);
+        leftArmMotor = new Talon(RobotMap.leftArmPort);
+        rightArmMotor = new Talon(RobotMap.rightArmPort);
 	}
 
     public void initDefaultCommand() {
@@ -20,6 +22,7 @@ public class Arm extends Subsystem {
     }
     
     public static void moveArm(double speed) {
-        armMotor.set(speed);
+        leftArmMotor.set(speed);
+        rightArmMotor.set(-speed);
     }
 }

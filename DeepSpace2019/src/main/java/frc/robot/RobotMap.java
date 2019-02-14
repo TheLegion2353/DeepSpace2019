@@ -29,4 +29,6 @@ public class RobotMap {
   public final static int backleftPort = 3;
   public final static int backrightPort = 6;
 
+  public final static int intakeMotor = 9;
+
 }

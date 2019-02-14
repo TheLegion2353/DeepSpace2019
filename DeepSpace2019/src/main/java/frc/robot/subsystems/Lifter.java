@@ -2,17 +2,17 @@ package frc.robot.subsystems;
 
 import frc.robot.RobotMap;
 import frc.robot.commands.LifterMove;
-
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Lifter extends Subsystem {
 
-    private static Victor rightLeadScrew;
+    private static Spark rightLeadScrew;
     private static Victor leftLeadScrew;
 	
 	public Lifter() {
-        rightLeadScrew = new Victor(RobotMap.rightLeadScrew);
+        rightLeadScrew = new Spark(RobotMap.rightLeadScrew);
         leftLeadScrew = new Victor(RobotMap.leftLeadScrew);
 	}
 

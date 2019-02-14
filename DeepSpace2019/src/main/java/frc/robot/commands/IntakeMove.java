@@ -21,7 +21,7 @@ public class IntakeMove extends Command {
             Robot.intake.moveIntake(0.25);
         }
         else if(OI.xboxController.getRawButton(OI.BButtonNum)) {
-            Robot.intake.moveIntake(-0.25);
+            Robot.intake.moveIntake(-1.00);
         }
         else {
             Robot.intake.moveIntake(0);

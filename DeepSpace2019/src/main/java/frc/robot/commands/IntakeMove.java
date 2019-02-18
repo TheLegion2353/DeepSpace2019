@@ -2,7 +2,7 @@ package frc.robot.commands;
 
 import frc.robot.OI;
 import frc.robot.Robot;
-
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class IntakeMove extends Command {
@@ -17,15 +17,7 @@ public class IntakeMove extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if(OI.xboxController.getRawButton(OI.AButtonNum)) {
-            Robot.intake.moveIntake(0.25);
-        }
-        else if(OI.xboxController.getRawButton(OI.BButtonNum)) {
-            Robot.intake.moveIntake(-0.25);
-        }
-        else {
-            Robot.intake.moveIntake(0);
-        }
+        Robot.intake.moveIntake(OI.getXboxLeftXAxis(RobotMap.xboxPort2));
     }
 
     // Make this return true when this Command no longer needs to run execute()

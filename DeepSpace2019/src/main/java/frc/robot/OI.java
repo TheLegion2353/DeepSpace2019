@@ -16,7 +16,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
   
-	public static Joystick xboxController;
+	public static Joystick xboxController1;
+	public static Joystick xboxController2;
 
 	// Xbox Button mappings
 	public final static int AButtonNum = 1;
@@ -40,26 +41,36 @@ public class OI {
 	public JoystickButton AButton, BButton, YButton, XButton;
 
 	public OI() {
-		xboxController = new Joystick(RobotMap.xboxPort);
-
-		AButton = new JoystickButton(xboxController, AButtonNum);
-		BButton = new JoystickButton(xboxController, BButtonNum);
-		YButton = new JoystickButton(xboxController, YButtonNum);
-		XButton = new JoystickButton(xboxController, XButtonNum);
-
+		xboxController1 = new Joystick(RobotMap.xboxPort1);
+		xboxController2 = new Joystick(RobotMap.xboxPort1);
 	}
 
-	public static double getXboxLeftXAxis() {
-		double x_axis = xboxController.getRawAxis(leftXAxis);
+	public static double getXboxLeftXAxis(int controller) {
+		double x_axis = 0;
+
+		if(controller == RobotMap.xboxPort1) {
+			x_axis = xboxController1.getRawAxis(leftXAxis);
+		}
+		else if(controller == RobotMap.xboxPort2) {
+			x_axis = xboxController2.getRawAxis(leftXAxis);
+		}
 
 		if (x_axis > -.2 && x_axis < .2)
 			x_axis = 0;
 
 		return x_axis;
+		
 	}
 
-	public static double getXboxLeftYAxis() {
-		double y_axis = xboxController.getRawAxis(leftYAxis);
+	public static double getXboxLeftYAxis(int controller) {
+		double y_axis = 0;
+
+		if(controller == RobotMap.xboxPort1) {
+			y_axis = xboxController1.getRawAxis(leftYAxis);
+		}
+		else if(controller == RobotMap.xboxPort2) {
+			y_axis = xboxController2.getRawAxis(leftYAxis);
+		}
 
 		if (y_axis > -.2 && y_axis < .2)
 			y_axis = 0;
@@ -67,8 +78,15 @@ public class OI {
 		return -y_axis;
 	}
 
-	public static double getXboxRightXAxis() {
-		double x_axis = xboxController.getRawAxis(rightXAxis);
+	public static double getXboxRightXAxis(int controller) {
+		double x_axis = 0;
+
+		if(controller == RobotMap.xboxPort1) {
+			x_axis = xboxController1.getRawAxis(rightXAxis);
+		}
+		else if(controller == RobotMap.xboxPort2) {
+			x_axis = xboxController2.getRawAxis(rightXAxis);
+		}
 
 		if (x_axis > -.2 && x_axis < .2)
 			x_axis = 0;
@@ -76,13 +94,23 @@ public class OI {
 		return -x_axis;
 	}
 
-	public static double getTriggerValue() {
-		double leftTriggerSpeed = xboxController.getRawAxis(left_Trigger);
+	public static double getTriggerValue(int controller) {
+		double leftTriggerSpeed = 0;
+		double rightTriggerSpeed = 0;
+
+		if(controller == RobotMap.xboxPort1) {
+			leftTriggerSpeed = xboxController1.getRawAxis(left_Trigger);
+			rightTriggerSpeed = xboxController1.getRawAxis(right_Trigger);
+		}
+		else if(controller == RobotMap.xboxPort2) {
+			leftTriggerSpeed = xboxController2.getRawAxis(left_Trigger);
+			rightTriggerSpeed = xboxController2.getRawAxis(right_Trigger);
+		}
+
 		if (leftTriggerSpeed < .1) {
 			leftTriggerSpeed = 0;
 		}
 
-		double rightTriggerSpeed = xboxController.getRawAxis(right_Trigger);
 		if (rightTriggerSpeed < .1) {
 			rightTriggerSpeed = 0;
 		}

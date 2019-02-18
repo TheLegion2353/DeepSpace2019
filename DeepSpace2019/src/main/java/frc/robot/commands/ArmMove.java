@@ -3,6 +3,7 @@ package frc.robot.commands;
 import frc.robot.EncoderInterface;
 import frc.robot.OI;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 import frc.robot.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -32,11 +33,12 @@ public class ArmMove extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if(!stabilizeArm) {
-            Robot.arm.moveArm(OI.getTriggerValue());
+            Robot.arm.moveArm(OI.getTriggerValue(RobotMap.xboxPort2));
+            System.out.println(encoder.count());
         }
         else {
             if(targetHeight - encoder.count() > 50 && encoder.count() < maxEncoder && encoder.count() > minEncoder) {
-                targetHeight += OI.getTriggerValue() * 50;
+                targetHeight += OI.getTriggerValue(RobotMap.xboxPort2) * 50;
 
                 if(targetHeight != lastTargetHeight) {
                     pidController = new PIDController(targetHeight, 0, 1, 1, 0, 0);

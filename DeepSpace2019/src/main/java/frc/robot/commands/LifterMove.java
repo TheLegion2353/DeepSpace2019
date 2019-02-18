@@ -17,10 +17,10 @@ public class LifterMove extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(OI.xboxController.getRawButton(OI.left_Bumper)) {
+    	if(OI.xboxController1.getRawButton(OI.left_Bumper)) {
             Robot.lifter.lift(1);
         }
-        else if(OI.xboxController.getRawButton(OI.right_Bumper)) {
+        else if(OI.xboxController1.getRawButton(OI.right_Bumper)) {
             Robot.lifter.lift(-1);
         }
         else {

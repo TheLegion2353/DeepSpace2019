@@ -17,7 +17,12 @@ public class IntakeMove extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.intake.moveIntake(OI.getXboxLeftXAxis(RobotMap.xboxPort2));
+        if(OI.xboxController1.getRawButton(OI.BButtonNum)) {
+            Robot.intake.moveIntake(OI.getXboxLeftYAxis(RobotMap.xboxPort2) * 0.2);
+        }
+        else {
+            Robot.intake.moveIntake(OI.getXboxLeftYAxis(RobotMap.xboxPort2));
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

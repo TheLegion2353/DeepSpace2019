@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ArmMove extends Command {
 
-    private final boolean stabilizeArm = false;
+    private final boolean stabilizeArm = true;
     private PIDController pidController;
 
     private final int minEncoder = 0;
-    private final int maxEncoder = 20000;
+    private final int maxEncoder = 2812;
 
     private double targetHeight = 0;
     private double lastTargetHeight = -1;
@@ -24,6 +24,7 @@ public class ArmMove extends Command {
         requires(Robot.arm);
 
         encoder = new EncoderInterface(8, 9, false);
+        encoder.reset();
     }
 
     // Called just before this Command runs the first time
@@ -31,22 +32,39 @@ public class ArmMove extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    protected void execute() {  
         if(!stabilizeArm) {
-            Robot.arm.moveArm(OI.getTriggerValue(RobotMap.xboxPort2));
+            Robot.arm.moveArm(-OI.getTriggerValue(RobotMap.xboxPort2));
             System.out.println(encoder.count());
         }
         else {
-            if(targetHeight - encoder.count() > 50 && encoder.count() < maxEncoder && encoder.count() > minEncoder) {
+
+            if(OI.xboxController2.getRawButton(OI.AButtonNum)) {
+                Robot.arm.moveArm(OI.getTriggerValue(RobotMap.xboxPort2));
+            }
+            else {
                 targetHeight += OI.getTriggerValue(RobotMap.xboxPort2) * 50;
 
-                if(targetHeight != lastTargetHeight) {
-                    pidController = new PIDController(targetHeight, 0, 1, 1, 0, 0);
+                if(Math.abs(targetHeight - encoder.count()) > 30) {
+                    if(targetHeight != lastTargetHeight) {
+                        if(targetHeight < minEncoder) {
+                            targetHeight = minEncoder;
+                        }
+                        if(targetHeight > maxEncoder) {
+                            targetHeight = maxEncoder;
+                        }
+
+                        pidController = new PIDController(targetHeight, -1, 1, 0.005, 0, 0.0125);
+                    }
+        
+                    double inputVoltage = pidController.Update(encoder.count());
+                    
+                    //System.out.println("Voltage: " + inputVoltage);
+                    //System.out.println("Target: " + targetHeight);
+                    //System.out.println("Current" + encoder.count());
+
+                    Robot.arm.moveArm(inputVoltage);
                 }
-
-                double inputVoltage = pidController.Update(encoder.count());
-
-                Robot.arm.moveArm(inputVoltage);
             }
         }
     }

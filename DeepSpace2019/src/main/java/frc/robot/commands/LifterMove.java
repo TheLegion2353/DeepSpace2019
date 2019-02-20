@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 import frc.robot.OI;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -17,15 +18,7 @@ public class LifterMove extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(OI.xboxController1.getRawButton(OI.left_Bumper)) {
-            Robot.lifter.lift(1);
-        }
-        else if(OI.xboxController1.getRawButton(OI.right_Bumper)) {
-            Robot.lifter.lift(-1);
-        }
-        else {
-            Robot.lifter.lift(0);
-        }
+    	Robot.lifter.lift(OI.getTriggerValue(RobotMap.xboxPort1));
     }
 
     // Make this return true when this Command no longer needs to run execute()

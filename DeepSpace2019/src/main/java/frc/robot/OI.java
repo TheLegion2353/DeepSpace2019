@@ -42,7 +42,7 @@ public class OI {
 
 	public OI() {
 		xboxController1 = new Joystick(RobotMap.xboxPort1);
-		xboxController2 = new Joystick(RobotMap.xboxPort1);
+		xboxController2 = new Joystick(RobotMap.xboxPort2);
 	}
 
 	public static double getXboxLeftXAxis(int controller) {
